@@ -8,7 +8,7 @@ const app = express();
 
 const PORT = process.env.PORT || 3001;
 
-//serve images, CSS files, and JavaScript files in a directory named public
+
 app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -35,9 +35,9 @@ app.post("/api/notes", (req, res) => {
     let noteList = JSON.parse(fs.readFileSync("./db/db.json", "utf8"));
     let notelength = (noteList.length).toString();
 
-    //create new property called id based on length and assign it to each json object
+t
     newNote.id = uuid();
-    //push updated note to the data containing notes history in db.json
+   
     noteList.push(newNote);
 
     //write the updated data to db.json
@@ -77,7 +77,7 @@ app.post("/api/notes", (req, res) => {
 
 
 
-//delete note according to their tagged id.
+//delete note
 app.delete("/api/notes/:id", (req, res) => {
     let noteList = JSON.parse(fs.readFileSync("./db/db.json", "utf8"));
     let noteId = (req.params.id).toString();
